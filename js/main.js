@@ -1,11 +1,8 @@
+'use strict';
 /* global data */
-
-const form = document.getElementById('journal-entry-form') as HTMLFormElement;
-const photoUrlInput = document.getElementById('photo-url') as HTMLInputElement;
-const photoPreview = document.getElementById(
-  'photo-preview',
-) as HTMLImageElement;
-
+const form = document.getElementById('journal-entry-form');
+const photoUrlInput = document.getElementById('photo-url');
+const photoPreview = document.getElementById('photo-preview');
 photoUrlInput.addEventListener('input', () => {
   const url = photoUrlInput.value;
   console.log('Photo URL input changed:', url);
@@ -17,22 +14,17 @@ photoUrlInput.addEventListener('input', () => {
     console.log(`Photo preview reset to placeholder`);
   }
 });
-
-form.addEventListener('submit', (event: Event) => {
+form.addEventListener('submit', (event) => {
   event.preventDefault();
-
-  const titleInput = document.getElementById('title') as HTMLInputElement;
-  const notesInput = document.getElementById('notes') as HTMLTextAreaElement;
-
-  const newEntry: JournalEntry = {
+  const titleInput = document.getElementById('title');
+  const notesInput = document.getElementById('notes');
+  const newEntry = {
     entryId: data.nextEntryId++,
     title: titleInput.value,
     photoUrl: photoUrlInput.value,
     notes: notesInput.value,
   };
-
   data.entries.push(newEntry);
   saveData();
-
   form.reset();
 });
