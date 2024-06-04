@@ -10,7 +10,7 @@ photoUrlInput.addEventListener('input', () => {
     photoPreview.src = url;
     console.log('Photo preview updated to:', url);
   } else {
-    photoPreview.src = 'images/placeholder.jpg';
+    photoPreview.src = 'images/placeholder-image-square.jpg';
     console.log(`Photo preview reset to placeholder`);
   }
 });
@@ -27,4 +27,5 @@ form.addEventListener('submit', (event) => {
   data.entries.push(newEntry);
   saveData();
   form.reset();
+  photoPreview.src = 'images/placeholder-image-square.jpg';
 });
