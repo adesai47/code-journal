@@ -14,7 +14,7 @@ interface DataModel {
   nextEntryId: number;
 }
 
-const data: DataModel = {
+let data: DataModel = {
   view: 'entry-form',
   entries: [],
   editing: null,
@@ -24,10 +24,7 @@ const data: DataModel = {
 const savedData = localStorage.getItem('code-journal-data');
 if (savedData) {
   const parsedData = JSON.parse(savedData);
-  data.view = parsedData.view;
-  data.entries = parsedData.entries;
-  data.editing = parsedData.editing;
-  data.nextEntryId = parsedData.nextEntryId;
+  data = parsedData;
 }
 
 function saveData(): void {

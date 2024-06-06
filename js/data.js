@@ -1,6 +1,6 @@
 'use strict';
 /* exported data */
-const data = {
+let data = {
   view: 'entry-form',
   entries: [],
   editing: null,
@@ -9,10 +9,7 @@ const data = {
 const savedData = localStorage.getItem('code-journal-data');
 if (savedData) {
   const parsedData = JSON.parse(savedData);
-  data.view = parsedData.view;
-  data.entries = parsedData.entries;
-  data.editing = parsedData.editing;
-  data.nextEntryId = parsedData.nextEntryId;
+  data = parsedData;
 }
 function saveData() {
   localStorage.setItem('code-journal-data', JSON.stringify(data));
