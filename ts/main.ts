@@ -1,5 +1,7 @@
 /* global data */
 
+const titleInput = document.getElementById('title') as HTMLInputElement;
+const notesInput = document.getElementById('notes') as HTMLTextAreaElement;
 const form = document.getElementById('journal-entry-form') as HTMLFormElement;
 const photoUrlInput = document.getElementById('photo-url') as HTMLInputElement;
 const photoPreview = document.getElementById(
@@ -17,9 +19,6 @@ photoUrlInput.addEventListener('input', () => {
 
 form.addEventListener('submit', (event: Event) => {
   event.preventDefault();
-
-  const titleInput = document.getElementById('title') as HTMLInputElement;
-  const notesInput = document.getElementById('notes') as HTMLTextAreaElement;
 
   const newEntry: JournalEntry = {
     entryId: data.nextEntryId++,

@@ -8,18 +8,26 @@ interface JournalEntry {
 }
 
 interface DataModel {
+  view: string;
   entries: JournalEntry[];
+  editing: JournalEntry | null;
   nextEntryId: number;
 }
 
 const data: DataModel = {
+  view: 'entry-form',
   entries: [],
+  editing: null,
   nextEntryId: 1,
 };
 
 const savedData = localStorage.getItem('code-journal-data');
 if (savedData) {
-  Object.assign(data, JSON.parse(savedData));
+  const parsedData = JSON.parse(savedData);
+  data.view = parsedData.view;
+  data.entries = parsedData.entries;
+  data.editing = parsedData.editing;
+  data.nextEntryId = parsedData.nextEntryId;
 }
 
 function saveData(): void {
